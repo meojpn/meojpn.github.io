@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#fbe4ec">
+<title>ふたもちの招待</title>
+<meta property="og:title" content="ふたもちの招待が届いています">
+<meta property="og:description" content="ふたりのホーム画面がくっつくアプリ『ふたもち』">
+<style>
+  :root {
+    --pink: #fbe4ec;
+    --peach: #fde6d8;
+    --lavender: #ece4f8;
+    --cream: #fff8f0;
+    --ink: #5a4250;
+    --ink-soft: #8a6f7d;
+    --accent: #c4567c;
+    --accent-press: #a9476a;
+    --card: rgba(255, 255, 255, 0.78);
+    --line: #f3d3df;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--cream);
+    background-image:
+      radial-gradient(circle at 15% 10%, var(--pink) 0, transparent 45%),
+      radial-gradient(circle at 90% 25%, var(--lavender) 0, transparent 45%),
+      radial-gradient(circle at 30% 95%, var(--peach) 0, transparent 50%);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.7;
+    padding: max(24px, env(safe-area-inset-top)) 16px max(32px, env(safe-area-inset-bottom));
+  }
+  main { max-width: 420px; margin: 0 auto; }
+  .line-hint {
+    display: none;
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 18px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(196, 86, 124, 0.15);
+  }
+  .line-hint .big { font-size: 1.15rem; color: var(--accent); display: block; }
+  .line-hint small { display: block; font-weight: 500; color: var(--ink-soft); margin-top: 4px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 32px 22px 26px;
+    text-align: center;
+    box-shadow: 0 12px 32px rgba(180, 120, 150, 0.14);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .icon {
+    width: 96px; height: 96px;
+    border-radius: 22px;
+    box-shadow: 0 8px 20px rgba(180, 120, 150, 0.25);
+    display: block; margin: 0 auto 18px;
+  }
+  .brand { font-size: 0.9rem; letter-spacing: 0.2em; color: var(--ink-soft); margin: 0 0 6px; }
+  h1 { font-size: 1.3rem; line-height: 1.6; margin: 0 0 22px; font-weight: 800; word-break: break-word; }
+  .btn {
+    display: block;
+    width: 100%;
+    min-height: 56px;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-decoration: none;
+    padding: 15px 20px;
+    margin: 0 0 12px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 18px rgba(196, 86, 124, 0.3); }
+  .btn-primary:active { background: var(--accent-press); }
+  .btn-secondary { background: #fff; color: var(--accent); border: 2px solid var(--line); }
+  .note {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 12px 14px;
+    margin: 10px 0 0;
+    text-align: left;
+  }
+  .error { display: none; font-size: 0.95rem; color: var(--ink-soft); margin: 0 0 16px; }
+  footer { text-align: center; font-size: 0.78rem; color: var(--ink-soft); margin-top: 22px; }
+  footer a { color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<main>
+  <div class="line-hint" id="lineHint" role="alert">
+    <span class="big">Safariでひらいてね</span>
+    右下（または右上）の「…」から『Safariで開く』を選んでください
+    <small>LINEの中のブラウザでは、アプリがひらけないことがあります</small>
+  </div>
+
+  <section class="card">
+    <img class="icon" src="icon.png" alt="ふたもちのアイコン" width="96" height="96">
+    <p class="brand">ふたもち</p>
+    <h1 id="title">ふたもちの招待が届いています</h1>
+    <p class="error" id="error">招待リンクが正しくないようです。届いたメッセージのリンクを、もう一度タップしてみてね。</p>
+
+    <a class="btn btn-primary" id="openApp" href="#">アプリでひらく</a>
+    <a class="btn btn-secondary" href="https://apps.apple.com/app/id6823712192">App Storeで入手</a>
+
+    <p class="note">アプリを入れたあと、このページにもどって『アプリでひらく』を押してね</p>
+  </section>
+
+  <footer>
+    iPhone同士で使えるアプリです<br>
+    <a href="https://meojpn.github.io/futamochi-legal/support.html">サポート</a>
+  </footer>
+</main>
+<script>
+(function () {
+  "use strict";
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get("s") || "";
+  var name = (params.get("n") || "").trim().slice(0, 40);
+  var validToken = /^[A-Za-z0-9_-]{1,128}$/.test(token);
+
+  // textContent escapes the name (no HTML injection).
+  if (name) {
+    document.getElementById("title").textContent = name + "さんから、ふたもちの招待が届いています";
+  }
+
+  var openButton = document.getElementById("openApp");
+  if (!validToken) {
+    openButton.style.display = "none";
+    document.getElementById("error").style.display = "block";
+  } else {
+    // A Universal Link tapped on its own domain stays in Safari, so the button uses the app's own scheme.
+    // When the app is installed, links from other apps (LINE with openExternalBrowser=1, Messages, the camera)
+    // open the app directly through the Universal Link.
+    openButton.href = "futamochi://invite?s=" + encodeURIComponent(token);
+  }
+
+  // Inside LINE's in-app browser: show the hint and ask LINE to reopen this page outside (documented parameter).
+  var ua = navigator.userAgent || "";
+  if (/\bLine\//i.test(ua)) {
+    document.getElementById("lineHint").style.display = "block";
+    if (params.get("openExternalBrowser") !== "1") {
+      params.set("openExternalBrowser", "1");
+      window.location.replace(window.location.pathname + "?" + params.toString());
+    }
+  }
+})();
+</script>
+</body>
+</html>
