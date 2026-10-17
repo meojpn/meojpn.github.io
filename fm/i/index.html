@@ -128,9 +128,14 @@
 <script>
 (function () {
   "use strict";
+  // Current links carry the token and name in the fragment (#s=…&n=…), which is never sent to the server, so it stays
+  // out of request logs. Links of earlier app builds carry them in the query (?s=…&n=…): read the fragment first, then
+  // the query.
   var params = new URLSearchParams(window.location.search);
-  var token = params.get("s") || "";
-  var name = (params.get("n") || "").trim().slice(0, 40);
+  var fragment = new URLSearchParams((window.location.hash || "").replace(/^#/, ""));
+  function param(key) { return fragment.get(key) || params.get(key) || ""; }
+  var token = param("s");
+  var name = param("n").trim().slice(0, 40);
   var validToken = /^[A-Za-z0-9_-]{1,128}$/.test(token);
 
   // textContent escapes the name (no HTML injection).
@@ -155,7 +160,8 @@
     document.getElementById("lineHint").style.display = "block";
     if (params.get("openExternalBrowser") !== "1") {
       params.set("openExternalBrowser", "1");
-      window.location.replace(window.location.pathname + "?" + params.toString());
+      // Keep the fragment: it holds the token.
+      window.location.replace(window.location.pathname + "?" + params.toString() + window.location.hash);
     }
   }
 })();
